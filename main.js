@@ -81,40 +81,40 @@
 
 // esercizio sfida a dadi
 
-let dado= {
+// let dado= {
 
-    players: [
-        {name: "Rosalinda", score: [], },
-        {name: "Nicola", score: [], },
-        {name: "Leonardo", score: [], },
-        {name: "Alina", score: [], },
-        {name: "Maria", score: [], },
-    ],
+//     players: [
+//         {name: "Rosalinda", score: [], },
+//         {name: "Nicola", score: [], },
+//         {name: "Leonardo", score: [], },
+//         {name: "Alina", score: [], },
+//         {name: "Maria", score: [], },
+//     ],
 
-    setScore: function(number) {
+//     setScore: function(number) {
 
-       let scores= this.players.forEach ((player)=> {
-        for (let i=1; i<=number; i++) {
-            let random= Math.floor(Math.random() * (6 - 1 + 1) + 1);
-            let punteggio=  player.score.push (random); 
-            console.log(`al tiro di dado di ${player.name} numero ${i}è uscito ${random}`);
+//        let scores= this.players.forEach ((player)=> {
+//         for (let i=1; i<=number; i++) {
+//             let random= Math.floor(Math.random() * (6 - 1 + 1) + 1);
+//             let punteggio=  player.score.push (random); 
+//             console.log(`al tiro di dado di ${player.name} numero ${i}è uscito ${random}`);
            
-        }
-       });
+//         }
+//        });
         
-    },
+//     },
 
-    setFinalScore: function() {
-        this.players.forEach ((player)=> {
-           player.finalScore= player.score.reduce((acc,n)=>acc + n );
-           console.log(`${player.name} ha totalizzato ${player.finalScore} punti`);
+//     setFinalScore: function() {
+//         this.players.forEach ((player)=> {
+//            player.finalScore= player.score.reduce((acc,n)=>acc + n );
+//            console.log(`${player.name} ha totalizzato ${player.finalScore} punti`);
 
-        }); 
-
-
+//         }); 
 
 
-    },
+
+
+//     },
 
     
       
@@ -132,15 +132,15 @@ let dado= {
 
     // }
 
-    setWinner: function () {
-        this.players.sort((a,b)=> b.finalscore - a.finalscore);
-        let winner= this.players[0]; 
-        if (winner.finalScore > this.players[1].finalScore) {
-            console.log(`il vincitore della gara ${winner.name}`);
-        } else {
-            console.log(`il vincitore della gara è ${this.players[1].name}`);
-        };
-    },
+    // setWinner: function () {
+    //     this.players.sort((a,b)=> b.finalscore - a.finalscore);
+    //     let winner= this.players[0]; 
+    //     if (winner.finalScore > this.players[1].finalScore) {
+    //         console.log(`il vincitore della gara ${winner.name}`);
+    //     } else {
+    //         console.log(`il vincitore della gara è ${this.players[1].name}`);
+    //     };
+    // },
          
 
 
@@ -155,11 +155,79 @@ let dado= {
 
 
 
+// }
+
+// dado.setScore (5);
+// dado.setFinalScore(); 
+// dado.setWinner();
+
+dado= {
+    players: [
+        {name: "Rosalinda", score: [], },
+        {name: "Nicola", score: [], },
+        {name: "Leonardo", score: [], },
+        {name: "Alina", score: [], },
+        {name: "Angela", score: [], },
+    ], 
+
+    setScore: function (number) {
+        this.players.forEach ((player)=> {
+           
+            for (let i=1; i<=number; i++) {
+                 let random= Math.floor(Math.random() * (6 - 1 + 1) + 1);
+                player.score.push(random);
+
+                 console.log(`al tiro di dado di ${player.name} numero ${i} è uscito ${random}`);
+            }
+
+           
+        });
+    },
+
+    setFinalScore: function () {
+        this.players.forEach ((player)=> {
+            player.finalScore= player.score.reduce((acc,n)=>acc+n);
+            console.log(`${player.name} ha totalizzato ${player.finalScore}`);
+
+
+        }
+        );
+    },
+
+    // setWinner: function () {
+    //     let winner= this.players[0];
+    //     this.players.forEach ((player)=> {
+    //         if (player.finalScore > winner.finalScore) {
+    //             winner = player
+
+                
+    //         };
+
+    //         console.log(`il vincitore è ${winner.name} totalizzando ${winner.finalScore}`);
+
+            
+    //     })
+    // },
+
+    setWinner: function () {
+        this.players.sort ((a,b)=> b.finalScore - a.finalScore);
+        let winner= this.players[0];
+        if (winner.finalScore== this.players[1].finalScore) {
+            console.log(`${this.players[1].name} e ${winner.name} hanno pareggiato`);
+        } else { console.log(`ha vinto ${winner.name}`)};
+    }, 
+
+    showRank: function () {
+        this.players.forEach ((player, i)=>
+        console.log(`${i}. ${player.name} ${player.finalScore}`))
+    },
 }
 
-dado.setScore (5);
-dado.setFinalScore(); 
-dado.setWinner();
+
+dado.setScore(5);
+dado.setFinalScore();
+dado.setWinner (); 
+dado.showRank (); 
 
 
 
